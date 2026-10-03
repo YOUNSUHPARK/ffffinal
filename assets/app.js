@@ -139,44 +139,19 @@ function renderDetail(slug){
 }
 
 /* ---------- about ---------- */
-const ABOUT_DOOR = `<svg viewBox="0 0 200 300" role="img" aria-label="살짝 열린 방문과 그 앞에 놓인 그림 한 장">
-  <g fill="none" stroke="#3D2B1E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M52 232V58h96v174"/>
-    <path d="M148 58 104 74v172l44-14"/>
-    <circle cx="113" cy="160" r="3.4" fill="#3D2B1E"/>
-    <path d="M34 232h132"/>
-    <path d="M62 250l44-8 10 28-46 9z"/>
-    <path d="M80 262c3-6 9-6 10 0 5-4 10 0 6 5"/>
-    <path d="M64 96l-8-4M62 118h-10M64 140l-8 4" opacity=".55"/>
-  </g>
-  <path d="M30 60l3.4 8.6 9.2.5-7.2 5.7 2.5 8.9-7.9-5.1-7.9 5.1 2.5-8.9-7.2-5.7 9.2-.5z" fill="#3D2B1E"/>
-</svg>`;
-const ABOUT_LOOP = `<svg viewBox="0 0 200 300" role="img" aria-label="수익이 그림을 그린 청년에게 돌아가는 순환">
-  <g fill="none" stroke="#3D2B1E" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M148 112a56 56 0 0 0-98 14"/>
-    <path d="M50 126l-9-17M50 126l18-6"/>
-    <path d="M52 190a56 56 0 0 0 98-14"/>
-    <path d="M150 176l9 17M150 176l-18 6"/>
-    <circle cx="100" cy="74" r="20"/>
-    <path d="M90 67l5 14 5-11 5 11 5-14M89 73h22"/>
-    <path d="M84 258v-44h32v44"/>
-    <path d="M116 214l-13 6v40l13-4"/>
-    <path d="M72 258h56"/>
-  </g>
-  <path d="M100 133l5 12.6 13.5.7-10.6 8.4 3.7 13-11.6-7.5-11.6 7.5 3.7-13-10.6-8.4 13.5-.7z" fill="#3D2B1E"/>
-</svg>`;
-
 function renderAbout(){
   document.title = 'About us — OUTSIDOOR';
   const pick = n => works.find(w => w.n === n) || works[0] || {};
   const art = pick('03'), skin = (pick('01').wear || [])[0];
   const steps = [
-    { n: '01', t: '문 안에서 그린 그림', d: '고립·은둔 청년이 자기 방에서 그린 그림에서 시작합니다.', art: ABOUT_DOOR, rot: -2.2 },
+    { n: '01', t: '문 안에서 그린 그림', d: '고립·은둔 청년이 자기 방에서 그린 그림에서 시작합니다.', 
+      art: '<img src="assets/img/about/01-window.webp" alt="밤, 불 켜진 창 안에 혼자 앉아 있는 사람을 그린 그림" loading="lazy">', rot: -2.2 },
     { n: '02', t: '타투 스티커가 되고', d: '그 그림을 그대로 살려, 어디에도 없는 타투 스티커로 만듭니다.',
       art: art.img ? `<img src="${art.img}" alt="${esc(art.display)} 타투 스티커 도안" loading="lazy">` : '', rot: 1.6 },
     { n: '03', t: '당신의 피부 위에', d: '청년 한 사람 한 사람의 이야기가 담긴 그림을 몸에 새깁니다.',
       art: skin ? `<img src="${esc(skin.src)}" alt="타투 스티커를 어깨에 붙인 모습" loading="lazy">` : '', rot: -1.4 },
-    { n: '04', t: '다시 청년에게', d: '수익의 일부는 그림을 그린 청년에게 고스란히 돌아갑니다.', art: ABOUT_LOOP, rot: 2 }
+    { n: '04', t: '다시 청년에게', d: '수익의 일부는 그림을 그린 청년에게 고스란히 돌아갑니다.', 
+      art: '<img src="assets/img/about/04-wall.webp" alt="쌓인 동전을 딛고 벽 너머를 내다보는 사람을 그린 그림" loading="lazy">', rot: 2 }
   ];
   main.innerHTML = `
   <article class="about">
